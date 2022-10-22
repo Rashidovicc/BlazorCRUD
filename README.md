@@ -1,10 +1,10 @@
 # Game
  
  Main Menu
-![image](https://user-images.githubusercontent.com/105649270/197178101-b6d2b8e7-e6b8-4c2b-b75e-b592bd8ffa6a.png)
+![image](https://user-images.githubusercontent.com/105649270/197322510-26a8ee87-da61-43b0-b3ea-c5f1d8adf362.png)
 
 Add new Video Game
-![image](https://user-images.githubusercontent.com/105649270/197178579-af3961ef-9bdc-4fef-b1c9-670a8c6dc8e7.png)
+![image](https://user-images.githubusercontent.com/105649270/197322543-c5c9e3cd-d91f-4fe7-be40-9d46f9e8f8ce.png)
 
 Edit Video Game
-![image](https://user-images.githubusercontent.com/105649270/197178798-c18f1224-3df2-4781-934b-7245f9b9c89b.png)
+![image](https://user-images.githubusercontent.com/105649270/197322524-f943043e-09c1-41b0-a195-5be66f0eb12d.png)
