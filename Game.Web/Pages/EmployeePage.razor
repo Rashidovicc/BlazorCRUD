@@ -1,0 +1,102 @@
+﻿@page "/employee"
+@page "/employee/{id:int}"
+@using AutoMapper
+@using Game.Web.Data.Domain
+@using Game.Web.Data.Service
+@inject IEmployeeService EmployeeService
+
+@if (Id == null)
+{
+    <h3>Create a new video game</h3>
+}
+else
+{
+    <h3>Edit "@employee.FirstName"</h3>
+}
+
+<EditForm Model="employee" OnSubmit="HandleSubmit">
+    @if (Id == null)
+    {
+        <div>
+            <label for="firstName">First Name</label>
+            <InputText id="firstName" @bind-Value="employee.FirstName" class="form-control"></InputText>
+        </div>
+        <div>
+            <label for="LastName">Last Name</label>
+            <InputText id="LastName" @bind-Value="employee.LastName" class="form-control"></InputText>
+        </div>
+        <div>
+            <label for="PhoneNumber">Phone Number</label>
+            <InputText id="PhoneNumber" @bind-Value="employee.PhoneNumber" class="form-control"></InputText>
+        </div>
+        <div>
+            <label for="Gmail">Gmail</label>
+            <InputText id="Gmail" @bind-Value="employee.Gmail" class="form-control"></InputText>
+        </div>
+        <div>
+            <label for="Login">Login</label>
+            <InputText id="Login" @bind-Value="employee.Login" class="form-control"></InputText>
+        </div>
+        <div>
+            <label for="Password">Password</label>
+            <InputText id="Password" @bind-Value="employee.Password" class="form-control"></InputText>
+        </div>
+    }
+    else
+    {
+        <div>
+            <label for="firstName">First Name</label>
+            <InputText id="firstName" @bind-Value="employee.FirstName" class="form-control"></InputText>
+        </div>
+        <div>
+            <label for="LastName">Last Name</label>
+            <InputText id="LastName" @bind-Value="employee.LastName" class="form-control"></InputText>
+        </div>
+        <div>
+            <label for="PhoneNumber">Phone Number</label>
+            <InputText id="PhoneNumber" @bind-Value="employee.PhoneNumber" class="form-control"></InputText>
+        </div>
+        <div>
+            <label for="Gmail">Gmail</label>
+            <InputText id="Gmail" @bind-Value="employee.Gmail" class="form-control"></InputText>
+        </div>
+        <div>
+            <label for="Login">Login</label>
+            <InputText id="Login" @bind-Value="employee.Login" class="form-control"></InputText>
+        </div>
+    }
+    <br />
+    <button type="submit" class="btn btn-primary">@btnText</button>
+</EditForm>
+
+@code {
+    [Parameter]
+    public int? Id { get; set; }
+
+    string btnText = string.Empty;
+    Employee employee = new Employee();
+    protected override void OnInitialized()
+    {
+        btnText = Id == null ? "Save New Employee" : "Update Employee";
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (Id != null)
+        {
+           employee =  await EmployeeService.GetSingleEmployee((int)Id);
+        }
+    }
+
+    async Task HandleSubmit()
+    {
+        if (Id == null)
+        {
+            await EmployeeService.CreateEmployee(employee);
+        }
+        else
+        {
+            await EmployeeService.UpdateEmployee(employee, (int)Id);
+        }
+    }
+}

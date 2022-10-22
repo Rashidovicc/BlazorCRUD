@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Game.Web.Data.Domain;
+using Microsoft.EntityFrameworkCore;
 
 namespace Game.Web.Data
 {
@@ -11,24 +12,20 @@ namespace Game.Web.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Game>().HasData(
-                    new Game
+            modelBuilder.Entity<Employee>().HasData(
+                    new Employee
                     {
                         Id = 1,
-                        Name = "Half Life 2",
-                        Developer = "Valve",
-                        Release = new DateTime(2004, 11, 16)
-                    },
-                    new Game
-                    {
-                        Id = 2,
-                        Name = "Day of the Tentacle",
-                        Developer = "Lucas Arts",
-                        Release = new DateTime(1993, 5, 25)
+                        FirstName = "Botirali",
+                        LastName = "Rahmonberdiyev",
+                        Gmail = "muhammmadibnabdurashid@gmail.com",
+                        Login = "botir1202",
+                        Password = "botir1202",
+                        PhoneNumber = "+998901313126"
                     }
                 );
         }
 
-        public DbSet<Game> Game => Set<Game>();
+        public DbSet<Employee> employees => Set<Employee>();
     }
 }

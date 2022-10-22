@@ -1,0 +1,68 @@
+﻿@page "/employees"
+@using Game.Web.Data
+@using Game.Web.Data.Domain
+@using Game.Web.Data.Service
+@inject IEmployeeService EmployeeService
+@inject NavigationManager NavigationManager
+
+<h3>Video Games</h3>
+
+<button class="btn btn-primary" @onclick="CreateNewGame">Create New Game</button>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>PhoneNumber</th>
+            <th>Gmail</th>
+            <th>Login</th>
+            <th>Password</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var game in EmployeeService.Employees)
+        {
+            <tr>
+                <td>@game.FirstName</td>
+                <td>@game.LastName</td>
+                <td>@game.PhoneNumber</td>
+                <td>@game.Gmail</td>
+                <td>@game.Login</td>
+                <td>@game.Password</td>
+                <td>
+                    <button class="btn btn-primary mr-2 " @onclick="(() => ShowGame(game.Id))">Edit employee</button>
+                    <button class="btn btn-danger mr-2" @onclick="(() => DeleteGame(game.Id))">Delete</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    [Parameter]
+    public int? Id { get; set; }
+
+    string btnText = string.Empty;
+    public List<Employee> games { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        await EmployeeService.LoadEmployees();
+    }
+
+    void ShowGame(int id)
+    {
+        NavigationManager.NavigateTo($"employee/{id}");
+    }
+
+    void CreateNewGame()
+    {
+        NavigationManager.NavigateTo("employee");
+    }
+
+    async Task DeleteGame(int id)
+    {
+        await EmployeeService.DeleteEmployee(id);
+    }
+}
