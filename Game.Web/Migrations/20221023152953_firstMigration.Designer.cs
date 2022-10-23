@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Game.Web.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20221021163710_seccondMigrations")]
-    partial class seccondMigrations
+    [Migration("20221023152953_firstMigration")]
+    partial class firstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -57,7 +57,7 @@ namespace Game.Web.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Game");
+                    b.ToTable("employees");
 
                     b.HasData(
                         new

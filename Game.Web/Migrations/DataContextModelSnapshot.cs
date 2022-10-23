@@ -55,7 +55,7 @@ namespace Game.Web.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Game");
+                    b.ToTable("employees");
 
                     b.HasData(
                         new

@@ -4,12 +4,12 @@
 
 namespace Game.Web.Migrations
 {
-    public partial class seccondMigrations : Migration
+    public partial class firstMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Game",
+                name: "employees",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -23,11 +23,11 @@ namespace Game.Web.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Game", x => x.Id);
+                    table.PrimaryKey("PK_employees", x => x.Id);
                 });
 
             migrationBuilder.InsertData(
-                table: "Game",
+                table: "employees",
                 columns: new[] { "Id", "FirstName", "Gmail", "LastName", "Login", "Password", "PhoneNumber" },
                 values: new object[] { 1, "Botirali", "muhammmadibnabdurashid@gmail.com", "Rahmonberdiyev", "botir1202", "botir1202", "+998901313126" });
         }
@@ -35,7 +35,7 @@ namespace Game.Web.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Game");
+                name: "employees");
         }
     }
 }

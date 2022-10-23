@@ -44,7 +44,7 @@ namespace Game.Web.Data.Service
             if (game == null)
                 throw new Exception("No game here. :/");
             return game;
-        }
+        } 
 
         public async Task LoadEmployees()
         {
