@@ -3,7 +3,7 @@ using System.Text;
 
 namespace Game.Web.Data.Helpers
 {
-    public static class StringExceptions
+    public static class StringExtentions
     {
         public static string Encrypt(this string password)
         {
